@@ -1,0 +1,42 @@
+{% extends 'main/base.html/' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Acceuil {% endblock %}
+
+{% block background %}
+
+<style>
+    html {
+  /* The image used */
+  min-height: 100%;
+  background-image: url("https://cdn.cstj.qc.ca/wp-content/uploads/2020/01/17103643/bibliothe%CC%80que-2952871.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<style>
+div.font_form {
+  font-size: 150%;
+  font-weight: bold;
+}
+</style>
+
+<div class="bg-img">
+  <form method="get" action="#">
+      <div class="font_form">
+        {{form|crispy}}
+      </div>
+    <button type="submit" class="btn btn-success" name="Rechercher">Rechercher</button>
+  </form>
+
+</div>
+
+{% endblock %}
