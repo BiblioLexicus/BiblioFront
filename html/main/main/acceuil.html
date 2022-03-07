@@ -27,10 +27,13 @@ height: 100vh; width: 100%;"</div>
     left: 70%;
     /* bring your own prefixes */
     transform: translate(-50%, -50%);
+  width: 600px;
   }
   .logoBiblio {
-    width: 800px;
-    height: 800px;
+    width: 600px;
+    height: 600px;
+    margin-top: 5%;
+    margin-left: 10%;
   }
 </style>
 
@@ -41,14 +44,13 @@ height: 100vh; width: 100%;"</div>
     <h3>Rechercher</h3>
     <form method="get" action="#" class="form-group">
       {% csrf_token %}
-      <div class="input-group mb-3">
-        {{form.name}}
+      <div class="input-group input-group-lg">
+        <input type="text" name="livre" id="InputLivre" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
         <div class="input-group-prepend">
-          <button type="submit" class="btn btn-success" name="Rechercher">Recherche</button>
+          <button type="submit", name="search", value="search", class="btn btn-primary btn-lg">Recherche</button>
         </div>
       </div>
     </form>
   </div>
 </div>
-
 {% endblock %}
