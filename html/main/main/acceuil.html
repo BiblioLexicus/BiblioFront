@@ -44,14 +44,14 @@ height: 100vh; width: 100%;"</div>
     <h3>Rechercher</h3>
     <form method="get" action="#" class="form-group">
       {% csrf_token %}
-      <div class="input-group mb-3">
-        {{form.name}}
+      <div class="input-group input-group-lg">
+        <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+
         <div class="input-group-prepend">
-          <button type="submit" class="btn btn-success" name="Rechercher">Recherche</button>
+          <button type="submit" class="btn btn-primary btn-lg" name="Rechercher">Recherche</button>
         </div>
       </div>
     </form>
   </div>
 </div>
-
 {% endblock %}
