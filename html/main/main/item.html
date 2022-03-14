@@ -4,25 +4,32 @@
 
 
 {% block content %}
+<style>
+    img {
+        height: 200px;
+        width: auto;
+    }
+</style>
+
 <div class="container-fluid">
      <div class="col-sm-10">
-        <img src="{{item_img}}">
+        <img src="http://www.imagespourtoi.com/lesimages/tintin/image-tintin-9.png">
 
          <div>
-             <h2>{{item_name}}</h2>
-             <h3>{{item_author}}</h3>
-             <p>
-                 {{item_res}}
-             </p>
+             <h2>Titre: {{livre.name_works}}</h2>
+             <h3>Auteur: {{livre.author_name}}</h3>
+             <h3>
+                 Résumé: {{livre.resume}}
+             </h3>
          </div>
 
          <div>
              <!--- >Disponibilites<-->
          </div>
      </div>
-    <div class="col-sm-2">
-        <h4>{{item_edition}}</h4>
-        <h5>{{item_publisher}}</h5>
+    <div class="">
+        <h4>Maison d'édition: {{livre.edition_house}}</h4>
+        <h5>Prix: {{livre.price}}$</h5>
     </div>
 
     <div>

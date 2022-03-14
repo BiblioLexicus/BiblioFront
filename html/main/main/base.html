@@ -45,13 +45,14 @@
         </ul>
     </div>
     {% if request.path != "/" %}
-    <form class="form-inline my-2 my-lg-0 mx-auto">
-        <div class="input-group mb-3">
-            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
-            <div class="input-group-prepend">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
-            </div>
+    <form method="get" action="#" class="form-inline my-2 my-lg-0 mx-auto">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+        <input placeholder="Chercher" type="text" name="livre" id="InputLivre" class="form-control mr-sm-2" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+        <div class="input-group-prepend">
+          <button type="submit", name="search", value="search", class="btn btn-outline-success my-2 my-sm-0">Recherche</button>
         </div>
+      </div>
     </form>
     {% endif %}
 </nav>
