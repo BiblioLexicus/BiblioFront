@@ -3,33 +3,115 @@
 {% block title %} Administration {% endblock %}
 
 {% block content %}
+<style> 
+    
+    .split {
+        height: 100%;
+        width: 50%;
+        position: absolute;
+        z-index: 1;
+        top: 15%;
+        overflow-x: hidden;
+        padding-top: 20px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+    }
 
-<h1> Administration </h1>
+    .left {
+        left: 0;
+    }
 
-<div class="form-group">
-    <form method="get" action="#">
-        {% csrf_token %}
-        <div class="input-group mb-3">
-            <input type="text" name="livre" class="form-control" id="InputLivre" aria-describedby="Livre" placeholder="Livre">
-            <div class="input-group-prepend">
-                <button type="submit", name="search", value="search", class="btn btn-primary">Submit</button>
+    .right {
+        right: 0;
+    }
+
+    .titre1 {
+        position: relative;
+        left: 25%;
+    }
+    .titre2 {
+        position: absolute;
+        left: 70%;
+        top: 10%;
+    }
+
+</style>
+
+<div class="titre1"><h2> Administration </h2></div>
+<div class="split left">
+    <div class="form-group">
+        <form method="get" action="#">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="text" name="livre" class="form-control" id="InputLivre" aria-describedby="Livre" placeholder="Livre">
+                <div class="input-group-prepend">
+                    <button type="submit", name="search", value="search", class="btn btn-primary">Submit</button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
+
+
+    <h3> Résultat </h3>
+    <ul class="list-group">
+    {% if liste_livres|length > 0 %}
+        {% for livres in liste_livres %}
+                <li class="elements">{{livres}} 
+                    <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
+                    <button type="submit" class="btn btn-danger" name="modifier">Supprimer</button></li>
+        {% endfor %}
+    {% else %}
+        Aucun résultat trouvé.
+    {% endif %}
 </div>
 
+<div class="titre2"><h2> Ajout de livre: </h2></div>
+<div class="split right">
+    <div class="form-group">
+        <form method="post" action="#">
+            {% csrf_token %}
+            <div class="col-sm"> 
+                <h3> Nom livre: </h3><br/>
+                <input type="text" name="nomLivre" class="form-control" id="nomLivre" aria-describedby="nomLivre" placeholder="Nom"><br/>
 
-<h3> Résultat </h3>
-<ul class="list-group">
-{% if liste_livres|length > 0 %}
-    {% for livres in liste_livres %}
-            <li class="elements">{{livres}} 
-                <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
-                <button type="submit" class="btn btn-danger" name="modifier">Supprimer</button></li>
-    {% endfor %}
-{% else %}
-    Aucun résultat trouvé.
-{% endif %}
-</ul>
+                <h3> Nom auteur: </h3><br/>
+                <input type="text" name="authorName" class="form-control" id="authorName" aria-describedby="authorName" placeholder="Nom auteur"><br/>
+
+                <h3> Date de publication: </h3><br/>
+                <input type="text" name="datePublication" class="form-control" id="datePublication" aria-describedby="datePublication" placeholder="Date de publication"><br/>
+
+                <h3> Maison d'édition: </h3>
+                <input type="text" name="editionHouse" class="form-control" id="editionHouse" aria-describedby="editionHouse" placeholder="Maison d'édition"><br/>
+
+                <h3> Nombre de pages: </h3>
+                <input type="text" name="nbrPage" class="form-control" id="nbrPage" aria-describedby="nbrPage" placeholder="Nombre de pages"><br/>
+
+                <h3> Résumé: </h3>
+                <input type="text" name="resume" class="form-control" id="resume" aria-describedby="resume" placeholder="Résumé"><br/>
+
+                <h3> Genre: </h3> 
+                <input type="text" name="genre" class="form-control" id="genre" aria-describedby="genre" placeholder="Genre"><br/>
+
+                <h3> Language: </h3>
+                <input type="text" name="language" class="form-control" id="language" aria-describedby="language" placeholder="Language"><br/>
+
+                <h3> État: </h3>
+                <input type="text" name="etat" class="form-control" id="etat" aria-describedby="etat" placeholder="État"><br/>
+
+                <h3> Numéro de copie: </h3>
+                <input type="text" name="numeroCopie" class="form-control" id="numeroCopie" aria-describedby="numeroCopie" placeholder="Numéro de copie"><br/>
+
+                <h3> Type de livre: </h3>
+                <input type="text" name="typeLivre" class="form-control" id="typeLivre" aria-describedby="typeLivre" placeholder="Type de livre"><br/>
+
+                <h3> Prix: </h3>
+                <input type="text" name="price" class="form-control" id="price" aria-describedby="price" placeholder="Prix"><br/>
+
+                <button type="submit", name="search", value="search", class="btn btn-primary">Submit</button>                
+            </div>
+        </form>
+    </div>
+</div>
 
 {% endblock %}
