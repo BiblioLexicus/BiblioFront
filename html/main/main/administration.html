@@ -46,7 +46,7 @@
             <div class="input-group mb-3">
                 <input type="text" name="livre" class="form-control" id="InputLivre" aria-describedby="Livre" placeholder="Livre">
                 <div class="input-group-prepend">
-                    <button type="submit", name="search", value="search", class="btn btn-primary">Submit</button>
+                    <button type="submit", name="searchAdmin", value="searchAdmin", class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>
@@ -57,7 +57,7 @@
     <ul class="list-group">
     {% if liste_livres|length > 0 %}
         {% for livres in liste_livres %}
-                <li class="elements">{{livres}} 
+                <li class="elements">{{livres.name_works}} Copy number: {{livres.copy_number}}
                     <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
                     <button type="submit" class="btn btn-danger" name="modifier">Supprimer</button></li>
         {% endfor %}
@@ -108,7 +108,7 @@
                 <h3> Prix: </h3>
                 <input type="text" name="price" class="form-control" id="price" aria-describedby="price" placeholder="Prix"><br/>
 
-                <button type="submit", name="search", value="search", class="btn btn-primary">Submit</button>                
+                <button type="submit", name="create", value="create", class="btn btn-primary">Submit</button>                
             </div>
         </form>
     </div>
