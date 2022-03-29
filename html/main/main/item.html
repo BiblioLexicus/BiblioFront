@@ -6,31 +6,43 @@
 {% block content %}
 <style>
     img {
-        height: 200px;
+        height: 600px;
         width: auto;
+    }
+    .Info_livre {
+        position: absolute;
+        top: 10%;
+        left: 40%;
+    }
+    .Info_sup {
+        position: absolute;
+        top: 40%;
+        left: 40%;
     }
 </style>
 
 <div class="container-fluid">
      <div class="col-sm-10">
-        <img src="http://www.imagespourtoi.com/lesimages/tintin/image-tintin-9.png">
+        <img src="https://github.com/BiblioLexicus/Design/blob/main/BiblioLex.png?raw=true">
 
-         <div>
-             <h2>Titre: {{livre.name_works}}</h2>
-             <h3>Auteur: {{livre.author_name}}</h3>
-             <h3>
+         <div class="Info_livre">
+            <h2>Titre: {{livre.name_works}}</h2>
+            <h3>Auteur: {{livre.author_name}}</h3>
+            <h3>
                  Résumé: {{livre.resume}}
-             </h3>
-         </div>
+            </h3>
+            <h4>Maison d'édition: {{livre.edition_house}}</h4>
+            <h5>Prix: {{livre.price}}$</h5>
+
+            <div class="">
+                <button type="button" class="btn btn-success">Emprunter</button>
+                <button type="button" class="btn btn-success">Ajouter au panier</button>
+            </div>
 
          <div>
              <!--- >Disponibilites<-->
          </div>
      </div>
-    <div class="">
-        <h4>Maison d'édition: {{livre.edition_house}}</h4>
-        <h5>Prix: {{livre.price}}$</h5>
-    </div>
 
     <div>
         <!--- >Ratings< -->

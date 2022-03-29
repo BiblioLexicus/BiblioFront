@@ -37,7 +37,9 @@
     }
 
 </style>
-
+<script src="jquery.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
 
 <div class="titre1"><h2> Administration </h2></div>
 <div class="split left">
@@ -67,7 +69,15 @@
     {% endif %}
 </div>
 
-<div class="titre2"><h2> Ajout de livre: </h2></div>
+<div class="titre2"><h2> Ajout de livre: </h2>
+{% if creation %}
+    <p style="color:green;">Livre créé</p>
+{% elif creation == False %}
+    <p style="color:red;">Livre non créé</p>
+{% else %}
+    <p></p>
+{% endif %}
+</div>
 <div class="split right">
     <div class="form-group">
         <form method="post" action="#">
@@ -147,7 +157,8 @@
                 </br><h3> Prix: </h3>
                 <input type="text" name="price" class="form-control" id="price" aria-describedby="price" placeholder="Prix"><br/>
 
-                <button type="submit", name="create", value="create", class="btn btn-primary">Submit</button>                
+                <button type="submit", name="create", value="create", class="btn btn-primary">Submit</button>     
+           
             </div>
         </form>
     </div>
