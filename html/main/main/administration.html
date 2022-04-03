@@ -37,10 +37,6 @@
     }
 
 </style>
-<script src="jquery.min.js"></script>
-<script src="popper.min.js"></script>
-<script src="bootstrap.min.js"></script>
-
 <div class="titre1"><h2> Administration </h2></div>
 <div class="split left">
     <div class="form-group">
@@ -60,9 +56,15 @@
     <ul class="list-group">
     {% if liste_livres|length > 0 %}
         {% for livres in liste_livres %}
-                <li class="elements">{{livres.name_works}} Copy number: {{livres.copy_number}}
-                    <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
-                    <button type="submit" class="btn btn-danger" name="modifier">Supprimer</button></li>
+                    <form method="POST" action="#">
+                        {% csrf_token %}
+                        <li>
+                            <input type="text" name="id_work" class="form-control" id="id_work" aria-describedby="id_work" placeholder="id_work" value="{{livres.id_works}}" hidden>
+                            {{livres.name_works}} Copy number: {{livres.copy_number}}
+                        <button type="submit" class="btn btn-primary" name="modifier">Modifier</button>
+                        <button type="submit" class="btn btn-danger" id="test" name="Supprimer" value="Supprimer">Supprimer</button></li>
+                        </form>
+                    </div>
         {% endfor %}
     {% else %}
         Aucun résultat trouvé.
