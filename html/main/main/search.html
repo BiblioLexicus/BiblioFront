@@ -3,6 +3,15 @@
 {% block title %}{{name}}{% endblock %}
 
 {% block content %} 
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+</style>
+
 <h1> Résultats de la recherche: {{name}} </h1>
 
 <ul class="list-group">
@@ -13,7 +22,7 @@
                <a href="/item/{{livres.id_works}}">{{livres.name_works}}  {{livres.id}}</a>
         {% endfor %}
     {% else %}
-        Aucun résultat trouvé.
+        <img src="https://raw.githubusercontent.com/BiblioLexicus/Design/main/Book_image_not_found.jpg" alt="img_not_found" class="center">
     {% endif %}
 
 </ul>
