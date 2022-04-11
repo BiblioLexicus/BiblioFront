@@ -3,137 +3,140 @@
 {% block title %} Administration {% endblock %}
 
 {% block page_decorator %}
-    <div style="padding: 20px">
-        <h1 class="recenter">Administration</h1>
-    </div>
+<div style="padding: 20px">
+    <h1 class="recenter">Administration</h1>
+</div>
 {% endblock %}
 
 {% block content %}
-    <style>
+<style>
 
-        .split {
-            height: 100%;
-            width: 50%;
-            position: absolute;
-            z-index: 1;
-            top: 15%;
-            overflow-x: hidden;
-            padding: 20px;
-        }
+    .split {
+        height: 100%;
+        width: 50%;
+        position: absolute;
+        z-index: 1;
+        top: 15%;
+        overflow-x: hidden;
+        padding: 20px;
+    }
 
-        .left {
-            left: 0;
-        }
+    .left {
+        left: 0;
+    }
 
-        .right {
-            right: 0;
-        }
+    .right {
+        right: 0;
+    }
 
-        .recenter {
-            text-align: center;
-        }
-    </style>
+    .recenter {
+        text-align: center;
+    }
+</style>
 
-    <div class="split left" style="padding: 40px">
-        <div class="recenter"><h2>Choix du livre</h2></div>
-        <div class="form-group">
-            <form method="get" action="#">
-                {% csrf_token %}
-                <div class="input-group mb-3">
-                    <input type="text" name="livre" class="form-control" id="InputLivre" aria-describedby="Livre"
-                           placeholder="Livre">
-                    <div class="input-group-prepend">
-                        <button type="submit" , name="searchAdmin" , value="searchAdmin" , class="btn btn-primary">
-                            Submit
-                        </button>
-                    </div>
+<div class="split left" style="padding: 40px">
+    <div class="recenter"><h2>Choix du livre</h2></div>
+    <div class="form-group">
+        <form method="get" action="#">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <label for="InputLivre"></label><label for="InputLivre"></label><input type="text" name="livre" class="form-control" id="InputLivre" aria-describedby="Livre"
+                                                                                       placeholder="Livre">
+                <div class="input-group-prepend">
+                    <button type="submit" name="searchAdmin" value="searchAdmin" class="btn btn-primary">
+                        Submit
+                    </button>
                 </div>
-            </form>
-        </div>
-
-        <h3> Résultat </h3>
-        <div>
-            <ul class="list-group">
-                {% if liste_livres|length > 0 %}
-                    {% for livres in liste_livres %}
-                        <form method="POST" action="#">
-                            {% csrf_token %}
-                            <li>
-                                <input type="text" name="id_work" class="form-control" id="id_work"
-                                       aria-describedby="id_work" placeholder="id_work" value="{{ livres.id_works }}"
-                                       hidden>
-                                {{ livres.name_works }} Copy number: {{ livres.copy_number }}
-                                <button type="submit" class="btn btn-primary" name="Modifier" value="Modifier">Modifier
-                                </button>
-                                <button type="submit" class="btn btn-danger" name="Supprimer" value="Supprimer">
-                                    Supprimer
-                                </button>
-                            </li>
-                        </form>
-                    {% endfor %}
-                {% else %}
-                    Aucun résultat trouvé.
-                {% endif %}
-            </ul>
-        </div>
+            </div>
+        </form>
     </div>
 
+    <h3> Résultat </h3>
+    <div>
+        <ul class="list-group">
+            {% if liste_livres|length > 0 %}
+            {% for livres in liste_livres %}
+            <li>
+                <form method="POST" action="#">
+                    {% csrf_token %}
 
-    <div class="split right" style="padding: 40px">
-        <div class="titre2">
-            {% if edit_mode == True %}
-                <div class="recenter"><h2>Edit livre:</h2></div>
+                    <label for="id_work"></label><input type="text" name="id_work" class="form-control" id="id_work"
+                                                        aria-describedby="id_work" placeholder="id_work" value="{{ livres.id_works }}"
+                                                        hidden>
+                    {{ livres.name_works }} Copy number: {{ livres.copy_number }}
+                    <button type="submit" class="btn btn-primary" name="Modifier" value="Modifier">Modifier
+                    </button>
+                    <button type="submit" class="btn btn-danger" name="Supprimer" value="Supprimer">
+                        Supprimer
+                    </button>
+
+                </form>
+            </li>
+            {% endfor %}
             {% else %}
-                <h2 class="recenter">Ajout de livre: </h2>
+            Aucun résultat trouvé.
             {% endif %}
+        </ul>
+    </div>
+</div>
 
-            {% if creation %}
-                <p style="color:green;">Livre créé</p>
-            {% elif creation == False %}
-                <p style="color:red;">Livre non créé</p>
-            {% else %}
-                <p></p>
-            {% endif %}
-        </div>
 
-        <div class="form-group">
-            <form method="post" action="#">
-                {% csrf_token %}
-                <div class="col-sm">
+<div class="split right" style="padding: 40px">
+    <div class="titre2">
+        {% if edit_mode == True %}
+        <div class="recenter"><h2>Edit livre:</h2></div>
+        {% else %}
+        <h2 class="recenter">Ajout de livre: </h2>
+        {% endif %}
 
-                    <input type="text" name="id_edit_livre" class="form-control" id="id_edit_livre"
-                           aria-describedby="id_edit_livre" placeholder="id_edit_livre" value="{{ edit_book.id_works }}"
-                           hidden>
+        {% if creation %}
+        <p style="color:green;">Livre créé</p>
+        {% elif creation == False %}
+        <p style="color:red;">Livre non créé</p>
+        {% else %}
+        <p></p>
+        {% endif %}
+    </div>
 
-                    <h3> Nom livre: </h3><br/>
-                    <input type="text" name="nomLivre" class="form-control" id="nomLivre"
-                           aria-describedby="nomLivre"
-                           placeholder="Nom" value="{{ edit_book.name_works }}"><br/>
+    <div class="form-group">
+        <form method="post" action="#">
+            {% csrf_token %}
+            <div class="col-sm">
 
-                    <h3> Nom auteur: </h3><br/>
-                    <input type="text" name="authorName" class="form-control" id="authorName"
-                           aria-describedby="authorName" placeholder="Nom auteur"
-                           value="{{ edit_book.author_name }}"><br/>
+                <label for="id_edit_livre"></label><label for="id_edit_livre"></label><input type="text" name="id_edit_livre" class="form-control" id="id_edit_livre"
+                                                                                             aria-describedby="id_edit_livre" placeholder="id_edit_livre" value="{{ edit_book.id_works }}"
+                                                                                             hidden>
 
-                    <h3> Date de publication: </h3><br/>
-                    <input type="date" name="datePublication" class="form-control" id="datePublication"
-                           aria-describedby="datePublication" placeholder="Date de publication"
-                           value="{{ date_str }}"><br/>
+                <h3> Nom livre: </h3><br/>
+                <label for="nomLivre"></label><input type="text" name="nomLivre" class="form-control" id="nomLivre"
+                                                     aria-describedby="nomLivre"
+                                                     placeholder="Nom" value="{{ edit_book.name_works }}"><br/>
 
-                    <h3> Maison d'édition: </h3>
-                    <input type="text" name="editionHouse" class="form-control" id="editionHouse"
-                           aria-describedby="editionHouse" placeholder="Maison d'édition"
-                           value="{{ edit_book.edition_house }}"><br/>
+                <h3> Nom auteur: </h3><br/>
+                <label for="authorName"></label><input type="text" name="authorName" class="form-control" id="authorName"
+                                                       aria-describedby="authorName" placeholder="Nom auteur"
+                                                       value="{{ edit_book.author_name }}"><br/>
 
-                    <h3> Nombre de pages: </h3>
-                    <input type="text" name="nbrPage" class="form-control" id="nbrPage" aria-describedby="nbrPage"
-                           placeholder="Nombre de pages" value="{{ edit_book.length }}"><br/>
+                <h3> Date de publication: </h3><br/>
+                <label for="datePublication"></label><input type="date" name="datePublication" class="form-control" id="datePublication"
+                                                            aria-describedby="datePublication" placeholder="Date de publication"
+                                                            value="{{ date_str }}"><br/>
 
-                    <h3> Résumé: </h3>
-                    <input type="text" name="resume" class="form-control" id="resume" aria-describedby="resume"
-                           placeholder="Résumé" value="{{ edit_book.resume }}"><br/>
+                <h3> Maison d'édition: </h3>
+                <label for="editionHouse"></label><input type="text" name="editionHouse" class="form-control" id="editionHouse"
+                                                         aria-describedby="editionHouse" placeholder="Maison d'édition"
+                                                         value="{{ edit_book.edition_house }}"><br/>
 
-                    <h3> Genre: </h3>
+                <h3> Nombre de pages: </h3>
+                <label for="nbrPage"></label><input type="text" name="nbrPage" class="form-control" id="nbrPage" aria-describedby="nbrPage"
+                                                    placeholder="Nombre de pages" value="{{ edit_book.length }}"><br/>
+
+                <h3> Résumé: </h3>
+                <label for="resume"></label><input type="text" name="resume" class="form-control" id="resume" aria-describedby="resume"
+                                                   placeholder="Résumé" value="{{ edit_book.resume }}"><br/>
+
+                <h3> Genre: </h3>
+                <label>
                     <select name="dropdown_genre">
                         <option value="{{ edit_book.genre }}" selected>{{ genre }}</option>
                         <option value="AB">Album et Journaux</option>
@@ -155,25 +158,29 @@
                         <option value="RA">Roman Adultes</option>
                         <option value="OO">Autres</option>
                     </select>
+                </label>
 
-                    <h3> Language: </h3>
-                    <input type="text" name="language" class="form-control" id="language"
-                           aria-describedby="language"
-                           placeholder="Language" value="{{ edit_book.language }}"><br/>
+                <h3> Language: </h3>
+                <label for="language"></label><input type="text" name="language" class="form-control" id="language"
+                                                     aria-describedby="language"
+                                                     placeholder="Language" value="{{ edit_book.language }}"><br/>
 
-                    <h3> État: </h3>
+                <h3> État: </h3>
+                <label>
                     <select name="dropdown_etat">
                         <option value="{{ etat_id }}" selected>{{ etat }}</option>
                         <option value="1">Bon</option>
                         <option value="0">Mauvais</option>
                     </select>
+                </label>
 
-                    <h3> Numéro de copie: </h3>
-                    <input type="text" name="numeroCopie" class="form-control" id="numeroCopie"
-                           aria-describedby="numeroCopie" placeholder="Numéro de copie"
-                           value="{{ edit_book.copy_number }}"><br/>
+                <h3> Numéro de copie: </h3>
+                <label for="numeroCopie"></label><input type="text" name="numeroCopie" class="form-control" id="numeroCopie"
+                                                        aria-describedby="numeroCopie" placeholder="Numéro de copie"
+                                                        value="{{ edit_book.copy_number }}"><br/>
 
-                    <h3> Type de livre: </h3>
+                <h3> Type de livre: </h3>
+                <label>
                     <select name="dropdown_type">
                         <option value="{{ edit_book.type_work }}" selected>{{ type }}</option>
                         <option value="AA">Action et Aventure</option>
@@ -189,20 +196,21 @@
                         <option value="CR">Comedie et Romance</option>
                         <option value="OO">Autres</option>
                     </select>
+                </label>
 
-                    <br>
-                    <h3> Prix: </h3>
-                    <input type="text" name="price" class="form-control" id="price" aria-describedby="price"
-                           placeholder="Prix" value="{{ edit_book.price }}"><br/>
+                <br>
+                <h3> Prix: </h3>
+                <label for="price"></label><input type="text" name="price" class="form-control" id="price" aria-describedby="price"
+                                                  placeholder="Prix" value="{{ edit_book.price }}"><br/>
 
-                    {% if edit_mode == True %}
-                        <button type="submit" , name="edit" , value="edit" , class="btn btn-primary">Edit</button>
-                    {% else %}
-                        <button type="submit" , name="create" , value="create" , class="btn btn-primary">Submit</button>
-                    {% endif %}
+                {% if edit_mode == True %}
+                <button type="submit" name="edit" value="edit" class="btn btn-primary">Edit</button>
+                {% else %}
+                <button type="submit" name="create" value="create" class="btn btn-primary">Submit</button>
+                {% endif %}
 
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+</div>
 {% endblock %}

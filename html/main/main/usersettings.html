@@ -49,31 +49,31 @@
             <div class="col-sm">
                 <div>
                     <h3> Name : </h3><br/>
-                    <input type="text" name="name" class="form-control" id="userName" aria-describedby="name"
-                           value="{{user.name}}"><br/>
+                    <label for="userName"></label><input type="text" name="name" class="form-control" id="userName" aria-describedby="name"
+                                                         value="{{user.name}}"><br/>
 
                     <h3> Email: </h3><br/>
-                    <input type="email" name="email" class="form-control" id="userEmail" aria-describedby="email"
-                           value="{{user.email}}"><br/>
+                    <label for="userEmail"></label><input type="email" name="email" class="form-control" id="userEmail" aria-describedby="email"
+                                                          value="{{user.email}}"><br/>
 
                     <h3> Password: </h3>
-                    <input type="password" name="password" class="form-control" id="userPasswd"
-                           aria-describedby="password"><br/>
+                    <label for="userPasswd"></label><input type="password" name="password" class="form-control" id="userPasswd"
+                                                           aria-describedby="password"><br/>
 
                     <h3> Retype password: </h3>
-                    <input type="password" name="passwordRetype" class="form-control" id="retypeUserPasswd"
-                           aria-describedby="password"><br/>
+                    <label for="retypeUserPasswd"></label><input type="password" name="passwordRetype" class="form-control" id="retypeUserPasswd"
+                                                                 aria-describedby="password"><br/>
 
                     <h3> Postal code: </h3>
-                    <input type="text" name="postalCode" class="form-control" id="postalCode"
-                           aria-describedby="postalCode" value="{{user.postalcode}}"><br/>
+                    <label for="postalCode"></label><input type="text" name="postalCode" class="form-control" id="postalCode"
+                                                           aria-describedby="postalCode" value="{{user.postalcode}}"><br/>
 
                     <h3> Image: </h3><br/>
                     <input type="image" name="image" class="form-control" id="userImage" aria-describedby="image"
-                           value="{{user.image}}"><br/>
+                           value="{{user.image}}" alt="User image"><br/>
 
                     <h3> Preferred genre: </h3>
-                    <select name="genre" id="genre">
+                    <label for="genre"></label><select name="genre" id="genre">
                         {% for genre in lst_genre %}
                         <option value="{{genre}}">{{genre}}></option>
                         {% endfor %}

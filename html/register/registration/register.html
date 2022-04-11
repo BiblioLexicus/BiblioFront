@@ -6,10 +6,51 @@
 
 
 {% block content %}
-    <form method="post" class="form-group">
+<style>
+    .formulaire {
+        width: 50%;
+        padding-left: 40px;
+    }
+</style>
+
+{% if creation %}
+    <p style="color:green;">Utilisateur créé!<p>
+{% elif creation == False %}
+    <p style="color:red;">Utilisateur créé!<p>
+{% else %}
+     <p>Création de compte<p>
+{% endif %}
+
+<div class="formulaire">
+    <form method="post" action="#" class="form-group">
         {% csrf_token %}
-        {{user_form}}
-        {{profile_form}}
-        <button type="submit" class="btn btn-success">Register</button>
+
+        <h3>Nom:</h3>
+        <input type="text" name="nom" class="form-control" id="nom" aria-describedby="nom"
+                                                   placeholder="Nom">
+
+        <h3>Prenom:</h3>
+        <input type="text" name="prenom" class="form-control" id="prenom" aria-describedby="prenom"
+                                                   placeholder="Prenom">
+
+        <h3>Date de naissance:</h3>
+        <input type="date" name="dateNaissance" class="form-control" id="dateNaissance"
+                                                            aria-describedby="dateNaissance" placeholder="Date de naissance">
+
+        <h3>Email:</h3>
+        <input type="email" name="email" class="form-control" id="email" aria-describedby="email"
+                                                   placeholder="Email">
+
+        <h3>Mot de passe:</h3>
+        <input type="password" name="mdp" class="form-control" id="mdp" aria-describedby="mdp"
+                                                   placeholder="Mot de passe">
+
+        <h3>Adresse:</h3>
+        <input type="text" name="address" class="form-control" id="address" aria-describedby="address"
+                                                   placeholder="Adresse Postale">
+
+        <button type="submit" name="inscription_btn" value="inscription_btn" class="btn btn-primary">Inscription</button>
+
     </form>
+</div>
 {% endblock %}

@@ -1,15 +1,22 @@
 {% extends 'main/base.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block title %} Login {% endblock %}
 
-{% load crispy_forms_tags %}
-{% load crispy_forms_filters %}
+{% block page_decorator %}
+    <h1 style="text-align: center">Login into your account</h1>
+{% endblock %}
 
 {% block content %}
+<div style="padding: 40px">
     <form method="post" class="form-group">
         {% csrf_token %}
-        {{form|crispy}}
-        <button type="submit" class="btn btn-success">Connexion</button>
+        {{ form|crispy }}
+        <div>
+            <br>
+            <button type="submit" class="btn btn-success">Connexion</button>
+        </div>
     </form>
+</div>
 {% endblock %}
