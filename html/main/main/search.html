@@ -15,17 +15,15 @@
 <h1> Résultats de la recherche: {{name}} </h1>
 
 <ul class="list-group">
-
     {% if liste_livres|length > 0 %}
-    {% for livres in liste_livres %}
-    <li class='elements'>
-        <a href="/item/{{livres.id_works}}">{{livres.name_works}} {{livres.id}}</a>
+        {% for livres in liste_livres %}
+        <li class='elements'>
+            <a href="/item/{{livres.id_works}}">{{livres.name_works}} {{livres.id}}</a>
         {% endfor %}
-        {% else %}
+    {% else %}
         <img src="https://raw.githubusercontent.com/BiblioLexicus/Design/main/Book_image_not_found.jpg"
-             alt="img_not_found" class="center">
-        {% endif %}
-
+            alt="img_not_found" class="center">
+    {% endif %}
 </ul>
 
 

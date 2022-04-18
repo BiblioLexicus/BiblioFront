@@ -3,24 +3,26 @@
 {% block title %} Profil {% endblock %}
 
 {% block content %}
+    {% if log == True %}
+        <ul>
+            <li>Nom: {{ user.name }}</li>
+            <li>Prénom: {{ user.first_name }}</li>
+            <li>Adresse Postale: {{ user.addresse_postale }}</li>
+            <li>Date de naissance: {{ user.expiration_subscription }}</li>
+        </ul>
 
-    <ul>
-        <li>Nom: {{ second_name }}</li>
-        <li>Prénom: {{ first_name }}</li>
-        <li>Adresse: {{ adress }}</li>
-        <li>Cell: {{ phone_number }}</li>
-        <li>Date d'expiration: {{ expiration_date }}</li>
-    </ul>
-
-    <div>
         <div>
-            <h2> Liste livres empruntés </h2>
-            <ul>
-                {% for livre in liste_emprunts %}
-                    <li>{{ livre }}</li>
-                {% endfor %}
-            </ul>
+            <div>
+                <h2> Liste livres empruntés </h2>
+                <ul>
+                    {% for livre in liste_emprunts %}
+                        <li>{{ livre }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
+    {% else %}
+        <h1  style="text-align: center"> Veuillez vous connecter <a href="/login">ici</a> </h1>
+    {% endif %}
 
 {% endblock %}
