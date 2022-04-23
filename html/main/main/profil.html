@@ -16,7 +16,7 @@
                 <h2> Liste livres empruntés </h2>
                 <ul>
                     {% for livre in liste_emprunts %}
-                        <li> <a href="item/{{livre.id_works}}">{{ livre.name_works }}</a> </li>
+                        <li> <a href="/item/{{livre.id_works}}">{{ livre.name_works }}</a> </li>
                     {% endfor %}
                 </ul>
             </div>
