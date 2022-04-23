@@ -49,7 +49,7 @@
         </ul>
     </div>
     {% if request.path != "/" %}
-    <form method="get" action="#" class="form-inline my-2 my-lg-0 mx-auto">
+    <form method="get" action="/search/" class="form-inline my-2 my-lg-0 mx-auto">
         {% csrf_token %}
         <div class="input-group mb-3">
             <input placeholder="Chercher" type="text" name="livre" id="InputLivre" class="form-control mr-sm-2"
