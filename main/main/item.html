@@ -1,0 +1,70 @@
+{% extends 'main/base.html' %}
+
+{% block title %} {{ item_name }} {% endblock %}
+
+
+{% block content %}
+    <style>
+        img {
+            height: 600px;
+            width: auto;
+        }
+
+        .Info_livre {
+            position: absolute;
+            top: 10%;
+            left: 40%;
+        }
+
+        .Info_sup {
+            position: absolute;
+            top: 40%;
+            left: 40%;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="col-sm-10">
+            <img src="https://github.com/BiblioLexicus/Design/blob/main/BiblioLex.png?raw=true" alt="Logo_big">
+
+            <div class="Info_livre">
+
+                {% if state_of_emprunt %}
+                    <p style="color:green">Emprunt ajouté à votre liste! </p>
+                {% elif state_of_emprunt == False %}
+                    <p style="color:red">Ce livre est déja emprunté</p>
+                {% else %}
+                    <p></p>
+                {% endif %}
+
+
+                <form action="#" method="GET">
+                    
+                    <input type="text" name="id_work" class="form-control" id="id_work"
+                                                        aria-describedby="id_work" placeholder="id_work" value="{{ livre.id_works }}"
+                                                        hidden>
+                    <h2>Titre: {{ livre.name_works }}</h2>
+                    <h3>Auteur: {{ livre.author_name }}</h3>
+                    <h3>
+                        Résumé: {{ livre.resume }}
+                    </h3>
+                    <h4>Maison d'édition: {{ livre.edition_house }}</h4>
+                    <h5>Prix: {{ livre.price }}$</h5>
+
+                    <div class="">
+                        <button type="submit" name="emprunt" id="emprunt" value="emprunt" class="btn btn-success">Emprunter</button>
+                        <button type="submit" class="btn btn-success">Ajouter au panier</button>
+                    </div>
+                </form>
+
+                <div>
+                    <!--- >Disponibilites<-->
+                </div>
+            </div>
+
+            <div>
+                <!--- >Ratings< -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

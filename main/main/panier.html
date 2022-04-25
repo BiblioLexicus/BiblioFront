@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Panier {% endblock %}
+
+{% block page_decorator %} <h1 style="text-align: center">Panier</h1>{% endblock %}
+
+{% block content %}
+
+    <style>
+        .elements {
+            padding: 5px;
+        }
+    </style>
+
+    <div class='empruntListe'>
+        <ul>
+        {% for livres in liste_emprunts %}
+            <li class="elements">{{livres}} <button type="submit" class="btn btn-danger" name="Enlever">Enlever</button></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

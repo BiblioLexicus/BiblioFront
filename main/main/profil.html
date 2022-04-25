@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Profil {% endblock %}
+
+{% block content %}
+    {% if log == True %}
+        <ul>
+            <li>Nom: {{ user.name }}</li>
+            <li>Prénom: {{ user.first_name }}</li>
+            <li>Adresse Postale: {{ user.addresse_postale }}</li>
+            <li>Date de naissance: {{ user.expiration_subscription }}</li>
+        </ul>
+
+        <div>
+            <div>
+                <h2> Liste livres empruntés </h2>
+                <ul>
+                    {% for livre in liste_emprunts %}
+                        <li> <a href="/item/{{livre.id_works}}">{{ livre.name_works }}</a> </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <h1  style="text-align: center"> Veuillez vous connecter <a href="/login">ici</a> </h1>
+    {% endif %}
+
+{% endblock %}
