@@ -3,11 +3,11 @@
 {% block title %} Libraire {% endblock %}
 
 {% block content %}
-    <h1>{{librairie_nom}}</h1>
+    <h1>{{libr.library_name}}</h1>
 
     <h3>Informations</h3>
     <ul>
-        <li><p>Adresse: {{adresse}}</p></li>
-        <li><p>Heures d'ouverture: {{heures_ouverture}}</p></li>
+        <li><p>Adresse: {{libr.postal_code}}</p></li>
+        <li><p>Heures d'ouverture: {{libr.schedules}}</p></li>
     </ul>
 {% endblock %}
