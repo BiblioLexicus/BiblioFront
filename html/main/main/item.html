@@ -23,6 +23,8 @@
         }
     </style>
 
+    
+
     <div class="container-fluid">
         <div class="col-sm-10">
             <img src="https://github.com/BiblioLexicus/Design/blob/main/BiblioLex.png?raw=true" alt="Logo_big">
@@ -53,7 +55,6 @@
 
                     <div class="">
                         <button type="submit" name="emprunt" id="emprunt" value="emprunt" class="btn btn-success">Emprunter</button>
-                        <button type="submit" class="btn btn-success">Ajouter au panier</button>
                     </div>
                 </form>
 
@@ -62,8 +63,24 @@
                 </div>
             </div>
 
-            <div>
-                <!--- >Ratings< -->
+            <div class="comment">
+                <h2> Commentaires: </h2>
+                <div class="form-group">
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="id_work" class="form-control" id="id_work"
+                                                        aria-describedby="id_work" placeholder="id_work" value="{{ livre.id_works }}"
+                                                        hidden>
+                        <label for="exampleFormControlTextarea1">Écrire un commentaire: </label>
+                        <textarea class="form-control" name="ecritureComm" id="ecritureComm" value="ecritureComm" rows="3"> </textarea>
+                        <button type="submit" name="commSave" id="commSave" value="commSave" class="btn btn-success">Envoyer</button>
+                    </form>
+                  </div>   
+                  
+                  {% for info in list_user %}
+                    <h3> {{ info.0 }}: </h3>
+                    <p> {{info.1.comment_text }} </p>
+                  {% endfor %}
             </div>
         </div>
     </div>

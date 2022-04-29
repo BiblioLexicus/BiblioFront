@@ -63,7 +63,7 @@
                     <label for="id_work"></label><input type="text" name="id_work" class="form-control" id="id_work"
                                                         aria-describedby="id_work" placeholder="id_work" value="{{ livres.id_works }}"
                                                         hidden>
-                    {{ livres.name_works }} Copy number: {{ livres.copy_number }}
+                    {{ livres.name_works }} 
                     <button type="submit" class="btn btn-primary" name="Modifier" value="Modifier">Modifier
                     </button>
                     <button type="submit" class="btn btn-danger" name="Supprimer" value="Supprimer">
@@ -108,12 +108,12 @@
                                                                                              hidden>
 
                 <h3> Nom livre: </h3><br/>
-                <label for="nomLivre"></label><input type="text" name="nomLivre" class="form-control" id="nomLivre"
+                <label for="nomLivre"></label><input maxlength="50" type="text" name="nomLivre" class="form-control" id="nomLivre"
                                                      aria-describedby="nomLivre"
                                                      placeholder="Nom" value="{{ edit_book.name_works }}"><br/>
 
                 <h3> Nom auteur: </h3><br/>
-                <label for="authorName"></label><input type="text" name="authorName" class="form-control" id="authorName"
+                <label for="authorName"></label><input maxlength="255" type="text" name="authorName" class="form-control" id="authorName"
                                                        aria-describedby="authorName" placeholder="Nom auteur"
                                                        value="{{ edit_book.author_name }}"><br/>
 
@@ -123,7 +123,7 @@
                                                             value="{{ date_str }}"><br/>
 
                 <h3> Maison d'édition: </h3>
-                <label for="editionHouse"></label><input type="text" name="editionHouse" class="form-control" id="editionHouse"
+                <label for="editionHouse"></label><input maxlength="45" type="text" name="editionHouse" class="form-control" id="editionHouse"
                                                          aria-describedby="editionHouse" placeholder="Maison d'édition"
                                                          value="{{ edit_book.edition_house }}"><br/>
 
@@ -132,7 +132,7 @@
                                                     placeholder="Nombre de pages" value="{{ edit_book.length }}"><br/>
 
                 <h3> Résumé: </h3>
-                <label for="resume"></label><input type="text" name="resume" class="form-control" id="resume" aria-describedby="resume"
+                <label for="resume"></label><input maxlength="2000" type="text" name="resume" class="form-control" id="resume" aria-describedby="resume"
                                                    placeholder="Résumé" value="{{ edit_book.resume }}"><br/>
 
                 <h3> Genre: </h3>
@@ -161,7 +161,7 @@
                 </label>
 
                 <h3> Language: </h3>
-                <label for="language"></label><input type="text" name="language" class="form-control" id="language"
+                <label for="language"></label><input maxlength="18" type="text" name="language" class="form-control" id="language"
                                                      aria-describedby="language"
                                                      placeholder="Language" value="{{ edit_book.language }}"><br/>
 
@@ -174,10 +174,10 @@
                     </select>
                 </label>
 
-                <h3> Numéro de copie: </h3>
-                <label for="numeroCopie"></label><input type="text" name="numeroCopie" class="form-control" id="numeroCopie"
+                <h3> Numéro de librairie: </h3>
+                <label for="numeroCopie"></label><input  maxlength="2" type="text" name="numeroCopie" class="form-control" id="numeroCopie"
                                                         aria-describedby="numeroCopie" placeholder="Numéro de copie"
-                                                        value="{{ edit_book.copy_number }}"><br/>
+                                                        value="{{ edit_book.id_library }}"><br/>
 
                 <h3> Type de livre: </h3>
                 <label>
@@ -200,7 +200,7 @@
 
                 <br>
                 <h3> Prix: </h3>
-                <label for="price"></label><input type="text" name="price" class="form-control" id="price" aria-describedby="price"
+                <label for="price"></label><input maxlength="5" type="text" name="price" class="form-control" id="price" aria-describedby="price"
                                                   placeholder="Prix" value="{{ edit_book.price }}"><br/>
 
                 {% if edit_mode == True %}

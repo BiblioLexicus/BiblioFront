@@ -13,10 +13,10 @@
     }
 </style>
 
-{% if creation %}
+{% if creation == True %}
     <p style="color:green;">Utilisateur créé!<p>
 {% elif creation == False %}
-    <p style="color:red;">Utilisateur créé!<p>
+    <p style="color:red;">Utilisateur non créé!<p>
 {% else %}
      <p>Création de compte<p>
 {% endif %}
@@ -45,8 +45,8 @@
         <input type="password" name="mdp" class="form-control" id="mdp" aria-describedby="mdp"
                                                    placeholder="Mot de passe">
 
-        <h3>Adresse:</h3>
-        <input type="text" name="address" class="form-control" id="address" aria-describedby="address"
+        <h3>Adresse Postale:</h3>
+        <input maxlength="7" type="text" name="address" class="form-control" id="address" aria-describedby="address"
                                                    placeholder="Adresse Postale">
 
         <button type="submit" name="inscription_btn" value="inscription_btn" class="btn btn-primary">Inscription</button>
