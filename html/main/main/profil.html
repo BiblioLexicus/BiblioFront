@@ -3,32 +3,38 @@
 {% block title %} Profil {% endblock %}
 
 {% block page_decorator %}
-<h1 style="text-align: center">Profil</h1>
+    <h1 style="text-align: center">Profil</h1>
 {% endblock %}
 
 {% block content %}
-{% if log == True %}
-<div>
-    <h2>Bonjour {{ user.first_name }}!</h2>
-<ul>
-    <li>Nom: {{ user.name }}</li>
-    <li>Prénom: {{ user.first_name }}</li>
-    <li>Adresse Postale: {{ user.addresse_postale }}</li>
-    <li>Date de naissance: {{ user.date_birth }}</li>
-</ul>
-</div>
-<div>
-    <div>
-        <h2> Liste livres empruntés </h2>
-        <ul>
-            {% for livre in liste_emprunts %}
-            <li><a href="/item/{{livre.id_works}}">{{ livre.name_works }}</a></li>
-            {% endfor %}
-        </ul>
+    <div style="padding: 20px;">
+    {% if log == True %}
+        <div>
+            <h2>Bonjour {{ user.first_name }}!</h2>
+            <ul>
+                <li>Nom: {{ user.name }}</li>
+                <li>Prénom: {{ user.first_name }}</li>
+                <li>Adresse Postale: {{ user.addresse_postale }}</li>
+                <li>Date de naissance: {{ user.date_birth }}</li>
+            </ul>
+        </div>
+        <div>
+            <div>
+                <h2> Liste livres empruntés </h2>
+                <ul>
+                    {% for livre in liste_emprunts %}
+                        <li><a href="/item/{{ livre.id_works }}">{{ livre.name_works }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <h1 style="text-align: center"> Veuillez vous connecter <a href="/login">ici</a></h1>
+    {% endif %}
+
+    <div style="padding: 20px;">
+        <button class="btn-success" type="button" onclick="location.href='/profile/settings'">Paramètres du compte</button>
     </div>
-</div>
-{% else %}
-<h1 style="text-align: center"> Veuillez vous connecter <a href="/login">ici</a></h1>
-{% endif %}
+        </div>
 
 {% endblock %}

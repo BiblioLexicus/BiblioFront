@@ -3,59 +3,90 @@
 {% block title %} Nouveau compte {% endblock %}
 
 {% block page_decorator %}
-<h1 style="text-align: center">Création de compte</h1>
+    <h1 style="text-align: center">Création de compte</h1>
 {% endblock %}
 
 {% load crispy_forms_tags %}
 
 
 {% block content %}
-<style>
-    .formulaire {
-        width: 50%;
-        padding-left: 40px;
-    }
-</style>
+    <style>
+        .formulaire {
+            width: 50%;
+            padding-left: 40px;
+            vertical-align: center;
+        }
 
-{% if creation %}
-<p style="color:green;">Utilisateur créé!<p>
-    {% elif creation == False %}
-<p style="color:red;">Utilisateur créé!<p>
+        .element {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            align-content: center;
+        }
+    </style>
+
+    {% if creation %}
+        <p style="color:green;">Utilisateur créé!<p>
+        {% elif creation == False %}
+        <p style="color:red;">Utilisateur créé!<p>
     {% endif %}
-<div style="padding: 20px">
+
     <div class="formulaire">
         <form method="post" action="#" class="form-group">
             {% csrf_token %}
 
-            <h3>Nom:</h3>
-            <label for="nom"></label><input type="text" name="nom" class="form-control" id="nom" aria-describedby="nom"
-                                            placeholder="Nom">
+            <div class="element">
+                <h3>Nom:</h3>
+                <label for="nom">Entrez votre nom</label><input type="text" name="nom" class="form-control" id="nom"
+                                                                aria-describedby="nom"
+                                                                placeholder="Nom">
+            </div>
 
-            <h3>Prenom:</h3>
-            <label for="prenom"></label><input type="text" name="prenom" class="form-control" id="prenom" aria-describedby="prenom"
-                                               placeholder="Prenom">
+            <div class="element">
+                <h3>Prénom:</h3>
+                <label for="prenom">Entrez votre prénom</label><input type="text" name="prenom" class="form-control"
+                                                                      id="prenom"
+                                                                      aria-describedby="prenom"
+                                                                      placeholder="Prenom">
+            </div>
 
-            <h3>Date de naissance:</h3>
-            <label for="dateNaissance"></label><input type="date" name="dateNaissance" class="form-control" id="dateNaissance"
-                                                      aria-describedby="dateNaissance" placeholder="Date de naissance">
+            <div class="element">
+                <h3>Date de naissance:</h3>
+                <label for="dateNaissance">Entrez votre date de naissance</label><input type="date" name="dateNaissance"
+                                                                                        class="form-control"
+                                                                                        id="dateNaissance"
+                                                                                        aria-describedby="dateNaissance"
+                                                                                        placeholder="Date de naissance">
+            </div>
 
-            <h3>Email:</h3>
-            <label for="email"></label><input type="email" name="email" class="form-control" id="email" aria-describedby="email"
-                                              placeholder="Email">
+            <div class="element">
+                <h3>Email:</h3>
+                <label for="email">Entrez votre email</label><input type="email" name="email" class="form-control"
+                                                                    id="email"
+                                                                    aria-describedby="email"
+                                                                    placeholder="Email">
+            </div>
 
-            <h3>Mot de passe:</h3>
-            <label for="mdp"></label><input type="password" name="mdp" class="form-control" id="mdp" aria-describedby="mdp"
-                                            placeholder="Mot de passe">
+            <div class="element">
+                <h3>Mot de passe:</h3>
+                <label for="mdp"></label>Entrez un mot de passe<input type="password" name="mdp" class="form-control"
+                                                                      id="mdp"
+                                                                      aria-describedby="mdp"
+                                                                      placeholder="Mot de passe">
+            </div>
 
-            <h3>Adresse Postale:</h3>
-            <label for="address"></label><input maxlength="6" type="text" name="address" class="form-control" id="address" aria-describedby="address"
-                                                placeholder="Adresse Postale">
+            <div class="element">
+                <h3>Adresse Postale:</h3>
+                <label for="address"></label>Entrez votre adresse<input maxlength="6" type="text" name="address" class="form-control"
+                                                                        id="address"
+                                                                        aria-describedby="address"
+                                                                        placeholder="Adresse Postale">
+            </div>
 
-            <button type="submit" name="inscription_btn" value="inscription_btn" class="btn btn-primary">
-                Inscription
-            </button>
-
+            <div style="padding-top: 20px">
+                <button type="submit" name="inscription_btn" value="inscription_btn" class="btn btn-primary">
+                    Inscription
+                </button>
+            </div>
         </form>
     </div>
-</div>
 {% endblock %}

@@ -34,6 +34,7 @@
     </style>
     <div style="padding: 60px">
         <div class="split left">
+
             <div><h2>{{ user.first_name }} {{ user.name }}</h2></div>
             <div>
                 <div><h3>{{ user.email }}</h3></div>
@@ -66,7 +67,7 @@
                                                                    id="userPasswd"
                                                                    aria-describedby="password"><br/>
 
-                            <h3> Retype password: </h3>
+                            <h3> Validez le mot de passe: </h3>
                             <label for="retypeUserPasswd"></label><input type="password" name="passwordRetype"
                                                                          class="form-control" id="retypeUserPasswd"
                                                                          aria-describedby="password"><br/>
@@ -80,7 +81,7 @@
                             <h3> Genre préferré: </h3>
                             <label for="genre"></label><select name="genre" id="genre">
                             {% for genre in lst_genre %}
-                                <option value="{{ genre }}">{{ genre }}></option>
+                                <option value="{{ genre }}">{{ genre }}</option>
                             {% endfor %}
                         </select>
                             <br/>
