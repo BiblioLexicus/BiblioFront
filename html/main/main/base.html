@@ -28,7 +28,7 @@
                 <a class="nav-link" href="/">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Recherche">Recherche Avancée</a>
+                <a class="nav-link" href="/search/">Recherche Avancée</a>
             </li>
             <li>
                 <ul class="navbar-nav">
@@ -38,7 +38,9 @@
                             Librairie
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/librairie/1">Librairie 1</a></li>
+                            {% for lib in libraries %}
+                                <li><a class="dropdown-item" href="/librairie/{{ lib.id_library }}">{{ lib.library_name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </li>
                 </ul>

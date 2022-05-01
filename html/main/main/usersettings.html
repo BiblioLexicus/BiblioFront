@@ -1,96 +1,101 @@
 {% extends 'main/base.html' %}
 
-{% block title %} Profile modification {% endblock %}
+{% block title %} Modification du profil {% endblock %}
+
+{% block page_decorator %}
+    <div style="text-align: center"><h1> Profil </h1></div> {% endblock %}
 
 {% block content %}
-<style>
+    <style>
 
-    .split {
-        height: 100%;
-        width: 50%;
-        position: absolute;
-        z-index: 1;
-        top: 15%;
-        overflow-x: hidden;
-        padding: 20px;
-    }
+        .split {
+            height: 100%;
+            width: 50%;
+            position: absolute;
+            z-index: 1;
+            top: 15%;
+            overflow-x: hidden;
+            padding: 20px;
+        }
 
-    .left {
-        left: 0;
-    }
+        .left {
+            left: 0;
+        }
 
-    .right {
-        right: 0;
-    }
+        .right {
+            right: 0;
+        }
 
-    .titre1 {
-        position: relative;
-        left: 25%;
-    }
+        .titre1 {
+            position: relative;
+            left: 25%;
+        }
 
-</style>
-
-<div class="align-middle"><h2> Profile </h2></div>
-<div class="split left">
-    <div><h2>{{user.username}}</h2></div>
-    <div>
-        <div><h3>{{user.username}}</h3></div>
-        <div><h3>{{user.email}}</h3></div>
-        <div><img src="{{user.imagelink}}" alt="{{user.username}}"></div>
-    </div>
-</div>
-
-
-<div class="split right">
-    <div class="titre1"><h2>Modify information</h2></div>
-    <div class="form-group">
-        <form method="post" action="#">
-            {% csrf_token %}
-            <div class="col-sm">
-                <div>
-                    <h3> Name : </h3><br/>
-                    <label for="userName"></label><input type="text" name="name" class="form-control" id="userName" aria-describedby="name"
-                                                         value="{{user.name}}"><br/>
-
-                    <h3> Email: </h3><br/>
-                    <label for="userEmail"></label><input type="email" name="email" class="form-control" id="userEmail" aria-describedby="email"
-                                                          value="{{user.email}}"><br/>
-
-                    <h3> Password: </h3>
-                    <label for="userPasswd"></label><input type="password" name="password" class="form-control" id="userPasswd"
-                                                           aria-describedby="password"><br/>
-
-                    <h3> Retype password: </h3>
-                    <label for="retypeUserPasswd"></label><input type="password" name="passwordRetype" class="form-control" id="retypeUserPasswd"
-                                                                 aria-describedby="password"><br/>
-
-                    <h3> Postal code: </h3>
-                    <label for="postalCode"></label><input type="text" name="postalCode" class="form-control" id="postalCode"
-                                                           aria-describedby="postalCode" value="{{user.postalcode}}"><br/>
-
-                    <h3> Image: </h3><br/>
-                    <input type="image" name="image" class="form-control" id="userImage" aria-describedby="image"
-                           value="{{user.image}}" alt="User image"><br/>
-
-                    <h3> Preferred genre: </h3>
-                    <label for="genre"></label><select name="genre" id="genre">
-                        {% for genre in lst_genre %}
-                        <option value="{{genre}}">{{genre}}></option>
-                        {% endfor %}
-                    </select>
-                    <br/>
-                    <br><br>
-                </div>
-
-                <button type="button" name="delete_account"
-                        value="delete_account" class="btn btn-danger">
-                    Delete Account
-                </button>
-                <button type="submit" name="create" value="create" class="btn btn-primary">Submit</button>
+    </style>
+    <div style="padding: 60px">
+        <div class="split left">
+            <div><h2>{{ user.first_name }} {{ user.name }}</h2></div>
+            <div>
+                <div><h3>{{ user.email }}</h3></div>
+                <div><h3>{{ user.adresse_postale }}</h3></div>
+                <div><h3>{{ user.date_birth }}</h3></div>
             </div>
-        </form>
+        </div>
 
+
+        <div class="split right">
+            <div class="titre1"><h2>Informations</h2></div>
+            <div class="form-group">
+                <form method="post" action="#">
+                    {% csrf_token %}
+                    <div class="col-sm">
+                        <div>
+                            <h3> Nom : </h3><br/>
+                            <label for="userName"></label><input type="text" name="name" class="form-control"
+                                                                 id="userName"
+                                                                 aria-describedby="name"
+                                                                 value="{{ user.name }}"><br/>
+
+                            <h3> Courriel: </h3><br/>
+                            <label for="userEmail"></label><input type="email" name="email" class="form-control"
+                                                                  id="userEmail" aria-describedby="email"
+                                                                  value="{{ user.email }}"><br/>
+
+                            <h3> Mot de passe: </h3>
+                            <label for="userPasswd"></label><input type="password" name="password" class="form-control"
+                                                                   id="userPasswd"
+                                                                   aria-describedby="password"><br/>
+
+                            <h3> Retype password: </h3>
+                            <label for="retypeUserPasswd"></label><input type="password" name="passwordRetype"
+                                                                         class="form-control" id="retypeUserPasswd"
+                                                                         aria-describedby="password"><br/>
+
+                            <h3> Code postal: </h3>
+                            <label for="postalCode"></label><input type="text" name="postalCode" class="form-control"
+                                                                   id="postalCode"
+                                                                   aria-describedby="postalCode"
+                                                                   value="{{ user.addresse_postale }}"><br/>
+
+                            <h3> Genre préferré: </h3>
+                            <label for="genre"></label><select name="genre" id="genre">
+                            {% for genre in lst_genre %}
+                                <option value="{{ genre }}">{{ genre }}></option>
+                            {% endfor %}
+                        </select>
+                            <br/>
+                            <br><br>
+                        </div>
+
+                        <button type="button" name="delete_account"
+                                value="delete_account" class="btn btn-danger">
+                            Supprimer compte
+                        </button>
+                        <button type="submit" name="create" value="create" class="btn btn-primary">Valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
 {% endblock %}

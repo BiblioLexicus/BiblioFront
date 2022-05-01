@@ -1,13 +1,17 @@
 {% extends 'main/base.html' %}
 
-{% block title %} Libraire {% endblock %}
+{% block title %} Librairies {% endblock %}
+
+{% block page_decorator %} <h1 style="text-align: center">{{ libr.library_name }}</h1> {% endblock %}
 
 {% block content %}
-    <h1>{{libr.library_name}}</h1>
-
-    <h3>Informations</h3>
-    <ul>
-        <li><p>Adresse: {{libr.postal_code}}</p></li>
-        <li><p>Heures d'ouverture: {{libr.schedules}}</p></li>
-    </ul>
+    <div style="padding: 40px">
+        <h3>Informations</h3>
+        <ul>
+            <li><p>Heures d'ouverture: {{ libr.schedules }}</p></li>
+            <li><p>Site web: {{ libr.library_website }}</p></li>
+            <li><p>Code Postal: {{ libr.postal_code }}</p></li>
+            <li><p>Numéro de téléphone: {{ libr.phone_address }}</p></li>
+        </ul>
+    </div>
 {% endblock %}

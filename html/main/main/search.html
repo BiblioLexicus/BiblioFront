@@ -18,7 +18,8 @@
     {% if liste_livres|length > 0 %}
         {% for livres in liste_livres %}
         <li class='elements'>
-            <a href="/item/{{livres.id_works}}">{{livres.name_works}} {{livres.id}}</a>
+            <p><a href="/item/{{livres.id_works}}">{{livres.name_works}} {{livres.id}}</a></p>
+        </li>
         {% endfor %}
     {% else %}
         <img src="https://raw.githubusercontent.com/BiblioLexicus/Design/main/Book_image_not_found.jpg"
