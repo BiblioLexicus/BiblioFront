@@ -21,6 +21,11 @@
             top: 40%;
             left: 40%;
         }
+
+        .comment {
+            margin-top: 3%;
+            width: 600px;
+        }
     </style>
 
     
@@ -58,29 +63,28 @@
                     </div>
                 </form>
 
-                <div>
-                    <!--- >Disponibilites<-->
-                </div>
-            </div>
+                </br><h2> Commentaires: </h2>
+                <div class="comment">
+                    <div class="form-group">
+                        <form action="#" method="POST">
+                            {% csrf_token %}
 
-            <div class="comment">
-                <h2> Commentaires: </h2>
-                <div class="form-group">
-                    <form action="#" method="POST">
-                        {% csrf_token %}
-                        <input type="text" name="id_work" class="form-control" id="id_work"
-                                                        aria-describedby="id_work" placeholder="id_work" value="{{ livre.id_works }}"
-                                                        hidden>
-                        <label for="exampleFormControlTextarea1">Écrire un commentaire: </label>
-                        <textarea class="form-control" name="ecritureComm" id="ecritureComm" value="ecritureComm" rows="3"> </textarea>
-                        <button type="submit" name="commSave" id="commSave" value="commSave" class="btn btn-success">Envoyer</button>
-                    </form>
-                  </div>   
-                  
-                  {% for info in list_user %}
-                    <h3> {{ info.0 }}: </h3>
-                    <p> {{info.1.comment_text }} </p>
-                  {% endfor %}
+                            <div class="input-group">
+                                <button type="submit" name="commSave" id="commSave" value="commSave" class="btn btn-success">Envoyer</button>
+                                <textarea class="form-control" name="ecritureComm" id="ecritureComm" value="ecritureComm" rows="3"> </textarea>
+                            </div>
+
+                            <input type="text" name="id_work" class="form-control" id="id_work"
+                                                            aria-describedby="id_work" placeholder="id_work" value="{{ livre.id_works }}"
+                                                            hidden>
+                        </form>
+                    </div>  
+                      {% for info in list_user %}
+                        </br>
+                        <h3> {{ info.0 }}: </h3>
+                        <p> {{info.1.comment_text }} </p>
+                      {% endfor %}
+                </div>
             </div>
         </div>
     </div>
