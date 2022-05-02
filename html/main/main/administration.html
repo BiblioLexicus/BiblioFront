@@ -3,7 +3,7 @@
 {% block title %} Administration {% endblock %}
 
 {% block page_decorator %}
-<div style="padding-top: 20px">
+<div style="padding: 20px">
     <h1 class="recenter">Administration</h1>
 </div>
 {% endblock %}
@@ -63,7 +63,7 @@
                     <label for="id_work"></label><input type="text" name="id_work" class="form-control" id="id_work"
                                                         aria-describedby="id_work" placeholder="id_work" value="{{ livres.id_works }}"
                                                         hidden>
-                    {{ livres.name_works }} | {{ livres.id_works }}
+                    {{ livres.name_works }} 
                     <button type="submit" class="btn btn-primary" name="Modifier" value="Modifier">Modifier
                     </button>
                     <button type="submit" class="btn btn-danger" name="Supprimer" value="Supprimer">
@@ -90,9 +90,9 @@
         {% endif %}
 
         {% if creation %}
-        <p style="color:green;">Livre créé</p>
+        <p style="color:green;">Oeuvre enregistré</p>
         {% elif creation == False %}
-        <p style="color:red;">Livre non créé</p>
+        <p style="color:red;">Enregistrement interrompu</p>
         {% else %}
         <p></p>
         {% endif %}
@@ -107,7 +107,7 @@
                                                                                              aria-describedby="id_edit_livre" placeholder="id_edit_livre" value="{{ edit_book.id_works }}"
                                                                                              hidden>
 
-                <h3> Nom livre: </h3><br/>
+                <h3> Nom Oeuvre: </h3><br/>
                 <label for="nomLivre"></label><input maxlength="50" type="text" name="nomLivre" class="form-control" id="nomLivre"
                                                      aria-describedby="nomLivre"
                                                      placeholder="Nom" value="{{ edit_book.name_works }}"><br/>
@@ -127,7 +127,7 @@
                                                          aria-describedby="editionHouse" placeholder="Maison d'édition"
                                                          value="{{ edit_book.edition_house }}"><br/>
 
-                <h3> Nombre de pages: </h3>
+                <h3> Nombre de pages ou durée: </h3>
                 <label for="nbrPage"></label><input type="text" name="nbrPage" class="form-control" id="nbrPage" aria-describedby="nbrPage"
                                                     placeholder="Nombre de pages" value="{{ edit_book.length }}"><br/>
 
@@ -169,8 +169,8 @@
                 <label>
                     <select name="dropdown_etat">
                         <option value="{{ etat_id }}" selected>{{ etat }}</option>
-                        <option value="1">Bon</option>
-                        <option value="0">Mauvais</option>
+                        <option value="1">Disponible</option>
+                        <option value="0">Indisponible</option>
                     </select>
                 </label>
 
@@ -179,7 +179,7 @@
                                                         aria-describedby="numeroCopie" placeholder="Numéro de copie"
                                                         value="{{ edit_book.id_library }}"><br/>
 
-                <h3> Type de livre: </h3>
+                <h3> Type d'oeuvre: </h3>
                 <label>
                     <select name="dropdown_type">
                         <option value="{{ edit_book.type_work }}" selected>{{ type }}</option>

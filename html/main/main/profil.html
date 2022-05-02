@@ -7,8 +7,12 @@
 {% endblock %}
 
 {% block content %}
+    
     <div style="padding: 20px;">
     {% if log == True %}
+        <div>
+            <img src="https://github.com/BiblioLexicus/Design/blob/main/BiblioLex.png?raw=true" alt="Logo" height="240" width="240">
+        </div>
         <div>
             <h2>Bonjour {{ user.first_name }}!</h2>
             <ul>
@@ -34,7 +38,12 @@
 
     <div style="padding: 20px;">
         <button class="btn-success" type="button" onclick="location.href='/profile/settings'">Paramètres du compte</button>
+        <button class="btn-success" type="button" onclick="location.href='/panier'">Panier</button>
+
+        {% if user.permissions == AA %}
+            <button class="btn-success" type="button" onclick="location.href='/administration'">Administration</button>
+        {% endif %}
     </div>
-        </div>
+ </div>
 
 {% endblock %}

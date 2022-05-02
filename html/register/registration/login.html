@@ -5,29 +5,42 @@
 {% block title %} Connexion {% endblock %}
 
 {% block page_decorator %}
-    <h1 style="text-align: center">Connexion dans votre compte</h1>
+<h1 style="text-align: center">Connexion dans votre compte</h1>
 {% endblock %}
 
 {% block content %}
 <div style="padding: 40px">
     <!-- Afficher si logged in -->
     {% if log == True%}
-        <h1 style="text-align: center"> Bienvenue {{user.name}}! </h1>
+    <h1 style="text-align: center"> Bienvenue {{user.name}}! </h1>
+    <div style="padding-top: 40px ; text-align: center">
+        <p>
+            Vous allez êtres redirigés à votre profil dans 3 secondes...
+        </p>
+    </div>
+    <meta http-equiv="refresh" content="3; URL=/profile/">
     {% else %}
-        <form method="post" class="form-group" action="#">
-            {% csrf_token %}
-            
-            <h3>Email:</h3>
-            <input type="email" name="email" class="form-control" id="email" aria-describedby="email"
-                                                    placeholder="Email">
+    <form method="post" class="form-group" action="#">
+        {% csrf_token %}
 
-            <h3>Mot de Passe:</h3>
-            <input type="password" name="mdplogin" class="form-control" id="mdplogin" aria-describedby="Mot de Passe"
-                                                    placeholder="Mot de Passe">
-                                                    
-            <button type="submit" name="loggin_btn" value="loggin_btn" class="btn btn-primary">Connexion</button>
-        </form>
-        <p> Pas de compte? Cliquez <a href='/inscription'>ici!</p>
+        <h3>Email:</h3>
+        <input type="email" name="email" class="form-control" id="email" aria-describedby="email"
+               placeholder="Email">
+
+        <h3>Mot de Passe:</h3>
+        <input type="password" name="mdplogin" class="form-control" id="mdplogin" aria-describedby="Mot de Passe"
+               placeholder="Mot de Passe">
+
+        <button type="submit" name="loggin_btn" value="loggin_btn" class="btn btn-primary">Connexion</button>
+    </form>
+
+    <div style="padding-top: 40px">
+        <a href="http://127.0.0.1:8000/inscription/">
+            <button type="submit" name="inscription_btn" value="inscription_btn" class="btn btn-primary">Inscription
+            </button>
+        </a>
+    </div>
     {% endif %}
 </div>
+
 {% endblock %}
