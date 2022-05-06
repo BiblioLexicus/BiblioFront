@@ -32,18 +32,18 @@
                 </ul>
             </div>
         </div>
+        <div style="padding: 20px;">
+            <button class="btn-success" type="button" onclick="location.href='/profile/settings'">Paramètres du compte</button>
+            <button class="btn-success" type="button" onclick="location.href='/panier'">Panier</button>
+    
+            {% if user.permissions == AA %}
+                <button class="btn-success" type="button" onclick="location.href='/administration'">Administration</button>
+            {% endif %}
+        </div>
     {% else %}
         <h1 style="text-align: center"> Veuillez vous connecter <a href="/login">ici</a></h1>
     {% endif %}
 
-    <div style="padding: 20px;">
-        <button class="btn-success" type="button" onclick="location.href='/profile/settings'">Paramètres du compte</button>
-        <button class="btn-success" type="button" onclick="location.href='/panier'">Panier</button>
-
-        {% if user.permissions == AA %}
-            <button class="btn-success" type="button" onclick="location.href='/administration'">Administration</button>
-        {% endif %}
-    </div>
  </div>
 
 {% endblock %}

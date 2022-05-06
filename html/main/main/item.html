@@ -6,8 +6,8 @@
 {% block content %}
     <style>
         img {
-            height: 600px;
-            width: auto;
+            height: 60%;
+            width: 45%;
         }
 
         .Info_livre {
@@ -26,13 +26,19 @@
             margin-top: 3%;
             width: 600px;
         }
+        
     </style>
 
     
 
     <div class="container-fluid">
         <div class="col-sm-10">
-            <img src="https://raw.githubusercontent.com/BiblioLexicus/Design/main/Book_image_not_found.jpg?raw=true" alt="Logo_big">
+            
+            {% if image_livre != None %}
+                <img src="{{image_livre}}">
+            {% else %}
+                <img src="https://raw.githubusercontent.com/BiblioLexicus/Design/main/work%20not%20found.png">
+            {% endif %}
 
             <div class="Info_livre">
 

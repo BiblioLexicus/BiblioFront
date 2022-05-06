@@ -203,6 +203,10 @@
                 <label for="price"></label><input maxlength="5" type="text" name="price" class="form-control" id="price" aria-describedby="price"
                                                   placeholder="Prix" value="{{ edit_book.price }}"><br/>
 
+                <h3> Image: </h3>
+                <label for="price"></label><input type="text" name="work_media" class="form-control" id="work_media" aria-describedby="work_media"
+                                                  placeholder="Lien vers image" value="{{ work_media.photo_path_work }}"><br/>
+
                 {% if edit_mode == True %}
                 <button type="submit" name="edit" value="edit" class="btn btn-primary">Edit</button>
                 {% else %}
