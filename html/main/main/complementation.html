@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Recherche automatique{% endblock %}
+
+{% block page_decorator %}
+<div style="padding: 20px">
+    <h1 class="recenter">Recherche automatique</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .recenter {
+        text-align: center;
+    }
+    .result_auto_livre{
+        margin: 2%;  
+    }
+
+</style>
+
+    <div class="recenter">
+        <ul style="font-size: 150%">
+        {% for book in resultats %}
+        <div class="result_auto_livre">
+            <li class="elements"><a href="{{book}}" class="link-secondary">{{book}}</a></li>
+        </div>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
